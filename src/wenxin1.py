@@ -34,15 +34,15 @@ def text_reply(msg):
     print type(mag)
     print type(getinfo(str(msg['Text'].encode("utf-8"))))
 
-    return msg['ActualNickName']+getinfo(str(msg['Text'].encode("utf-8")))+ u'爱撒谎的机器人'
+    return getinfo(str(msg['Text'].encode("utf-8")))
 
 
 
 
 @itchat.msg_register(TEXT, isFriendChat=False, isGroupChat=True,isMpChat=True)
 def text_reply(msg):
-    if msg.isAt:
-        return u'{0}：再次确认您的信息是：{1}我会尽快提醒他回复你的！'.format(msg['ActualNickName'],msg['Text'])
+    # if msg.isAt:
+    #     return u'{0}：再次确认您的信息是：{1}我会尽快提醒他回复你的！'.format(msg['ActualNickName'],msg['Text'])
 
     mag = msg['Text']
     print type(mag)
@@ -70,5 +70,6 @@ def download_files(msg):
 
 
 
-itchat.auto_login(enableCmdQR=True,hotReload=True)
+itchat.auto_login(enableCmdQR=False,hotReload=True)
+# print itchat.search_friends()
 itchat.run()
